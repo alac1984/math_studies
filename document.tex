@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+
+\geometry{a4paper, left=20mm, right=20mm, top=20mm, bottom=20mm}
+\setlength{\parindent}{0pt} % This line removes indentation
+\setlength{\parskip}{1em} % This line adds 1 em between paragraphs
+\setstretch{1.15} % This line changes the line spacing
+
+\definecolor{pagecolor}{RGB}{40, 40, 40} % Dark gray color
+\pagecolor{pagecolor}
+\color{white}
+
+\begin{document}
+
+	
+	% Title and Author Information
+	\title{Discrete Math - Exercises}
+	\author{André Carvalho}
+	\date{17/05/2023} % Use \date{specific date} to set a specific date
+	
+	\maketitle
+	
+	\setcounter{section}{-1}
+	
+	% Introduction
+	\section{Chapter 0}
+	Introduction and Preliminares
+	
+	\subsection{Investigate, pg. 2}
+	1. Every person will shake hands with 9 other people. And a handshake is something that "belongs" to both participants. So it's $\frac{10 * 9}{2} = 45$.
+	  
+	2. Zeno ate! $2 * 26 = 52$ hotdogs. The total hotdogs eaten was 
+	$$
+	\sum_{i=1}^{26} i*2 = 2 * \sum_{i=1}^{26} i = 2 * \frac{26 * 27}{2} = 351
+	$$
+
+	3. Let's break the propositions:
+
+	p: If this chess is empty
+
+	q: The other chest's message is true
+
+	The left chess message is $p \rightarrow q$.
+
+	r: This chest is filled with treasure
+	s: The other chest contains deadly scorpions
+
+	The right chess message is $p \wedge q$.
+
+	If I open left chest and it's empty, so, as $p \rightarrow q$:
+
+	$$T \rightarrow q$$
+
+	For this to be true, q must be true. But if q is true, them the right chest message is true, otherwise left chest message must be false, what is a paradox. So the first chest could not be empty and therefore the left chess message could never be the true one.
+
+	For the right chess message to be true, either this chess is filled with treasure of the other is filled with deadly scorpions. I cannot guarantee that this chest is filled with treasure, but is at least safe to open and test it.
+	
+	4. No, it is not. There's no physical configuration that make possible to draw connections for all other towns without intersections.
+
+	\subsection{Investigate, pg. 4}
+
+	Troll 1: $p \rightarrow q$
+
+	Troll 2: $\sim(p \rightarrow q)$
+
+	Troll 3: $r \wedge s$
+
+	Assuming Troll 1 is a knight, them Troll 2 is a knave and Troll 3 is a knight also. And them Troll 1 is wrong, because there's no 2 knights, and we're in a paradox. This is not a valid scenario.
+
+	Assuming Troll 2 is a knight, them Troll 1 is a knave. If Troll 1 is a knave ('p'), as its sentence is a implication, the only way he can be lying is with proposition 'q' being false, so there could not be two knights. So Troll 3 cannot be right, but it is, and we're in another paradox here. Another invalid scenario.
+
+	Assuming Troll 3 is a knight, so Troll 1 is a knave
+
+
+	
+	
+\end{document}
