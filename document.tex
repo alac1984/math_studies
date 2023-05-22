@@ -1,30 +1,41 @@
 \documentclass{article}
-\usepackage{xcolor}
-\usepackage{geometry}
-\usepackage{setspace}
+\usepackage{xcolor} % for defining colors
+\usepackage{geometry} % to ajust margins
+\usepackage{setspace} % to use \setlength and \setstretch
+\usepackage{anyfontsize} % to ajust font sizes with \fontsize
+\usepackage{amssymb} % to use \veebar (xor)
 
-\geometry{a4paper, left=20mm, right=20mm, top=20mm, bottom=20mm}
-\setlength{\parindent}{0pt} % This line removes indentation
-\setlength{\parskip}{1em} % This line adds 1 em between paragraphs
-\setstretch{1.15} % This line changes the line spacing
+% Font definition
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{titlesec}
+
+% Title formating
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+
+% Adjusting margins
+\geometry{a4paper, left=30mm, right=30mm, top=30mm, bottom=30mm} 
+% \setlength{\parindent}{0pt} % This line removes indentation
+% \setstretch{1.15} % This line changes the line spacing
+\setlength{\parskip}{1em} % This line adds 0.5 em between paragraphs
 
 \definecolor{pagecolor}{RGB}{40, 40, 40} % Dark gray color
-\pagecolor{pagecolor}
-\color{white}
+\pagecolor{pagecolor} % background color
+\color{white} % font color
+\sloppy % for full hbox errors
 
 \begin{document}
-
-	
+  \fontsize{14}{15}\selectfont % font size 14, line spacing as it was 15
 	% Title and Author Information
 	\title{Discrete Math - Exercises}
 	\author{André Carvalho}
-	\date{17/05/2023} % Use \date{specific date} to set a specific date
+	% \date{17/05/2023} % Use \date{specific date} to set a specific date
 	
 	\maketitle
 	
-	\setcounter{section}{-1}
+	\setcounter{section}{-1} % start to count from zero
 	
-	% Introduction
 	\section{Chapter 0}
 	Introduction and Preliminares
 	
@@ -42,12 +53,12 @@
 
 	q: The other chest's message is true
 
-	The left chess message is $p \rightarrow q$.
+	The left chest message is $p \rightarrow q$.
 
 	r: This chest is filled with treasure
 	s: The other chest contains deadly scorpions
 
-	The right chess message is $p \wedge q$.
+	The right chest message is $p \wedge q$.
 
 	If I open left chest and it's empty, so, as $p \rightarrow q$:
 
@@ -61,19 +72,329 @@
 
 	\subsection{Investigate, pg. 4}
 
-	Troll 1: $p \rightarrow q$
+  Let's start by analyzing each of the troll's statements:
 
-	Troll 2: $\sim(p \rightarrow q)$
+  Troll 1: If I am a knave, then there are exactly two knights here.
 
-	Troll 3: $r \wedge s$
+  Troll 2: Troll 1 is lying.
 
-	Assuming Troll 1 is a knight, them Troll 2 is a knave and Troll 3 is a knight also. And them Troll 1 is wrong, because there's no 2 knights, and we're in a paradox. This is not a valid scenario.
+  Troll 3: Either we are all knaves or at least one of us is a knight.
+  
+  First, we need to note that there cannot be three knaves because Troll 3's statement would be a lie in this scenario, which can't be the case.
 
-	Assuming Troll 2 is a knight, them Troll 1 is a knave. If Troll 1 is a knave ('p'), as its sentence is a implication, the only way he can be lying is with proposition 'q' being false, so there could not be two knights. So Troll 3 cannot be right, but it is, and we're in another paradox here. Another invalid scenario.
+  Second, there cannot be three knights, as that would make Troll 1's statement a lie, which again can't be the case.
 
-	Assuming Troll 3 is a knight, so Troll 1 is a knave
+  Given these two observations, we know there must be at least one knight and at least one knave. This leaves us with three possibilities:
 
+  There are two knights and one knave.
 
+  There are two knaves and one knight.
+
+  Let's consider these possibilities.
+
+  If there are two knights and one knave, the only way this can happen given the trolls' statements is if Troll 1 is a knight, Troll 2 is a knave, and Troll 3 is a knight. This is because, if Troll 1 were a knave, then his statement would be true, which can't be the case.
+
+  If there are two knaves and one knight, the only way this can happen is if Troll 1 is a knave, Troll 2 is a knave, and Troll 3 is a knight. This is because, if Troll 3 were a knave, then his statement would be true, which can't be the case.
+
+  So, there's a contradiction in your original reasoning: you've got two scenarios, but one of them must be wrong because in each scenario, we have a different number of knights and knaves.
+
+  After a detailed analysis of the trolls' statements, we can conclude that the only possible configuration is that Troll 1 is a knight, Troll 2 is a knave, and Troll 3 is a knight.
+
+  \textbf{Truth Tables:}
+
+  Troll 1: If I am a knave, then there are exactly two knights here.
+
+  This statement can be translated as:
+
+  p: I am a knave (Troll 1)
+
+  q: There are exactly two knights here
+
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $p$ (Troll 1) & $q$ (Two knights) & $p \rightarrow q$ \\
+    \hline
+    T (knave) & F (not two knights) & F \\
+    T (knave) & T (two knights) & T \\
+    F (knight) & F (not two knights) & T \\
+    F (knight) & T (two knights) & T \\
+    \hline
+  \end{tabular}
+  }
+
+  Troll 2: Troll 1 is lying.
+
+  This statement can be translated as:
+
+  p: Troll 1 is not telling the truth
+
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|}
+    \hline
+    $p$ (Troll 1) & $\neg p$ (Troll 2) \\
+    \hline
+    T (truth) & F (lie) \\
+    F (lie) & T (truth) \\
+    \hline
+  \end{tabular}
+  }
+
+  Troll 3: Either we are all knaves or at least one of us is a knight.
+
+  This statement can be translated as:
+
+  p: We are all knaves (Troll 3)
+
+  q: At least one of us is a knight
+
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $p$ (All knaves) & $q$ (One knight) & $p \vee q$ (Troll 3) \\
+    \hline
+    T (all knaves) & F (no knights) & T \\
+    T (all knaves) & T (one knight) & T \\
+    F (not all knaves) & F (no knights) & F \\
+    F (not all knaves) & T (one knight) & T \\
+    \hline
+  \end{tabular}
+  }
+
+  The configuration that makes all statements correct (given that a knight always tells the truth and a knave always lies) is the following:
+
+  Troll 1 is a knight (because "If I am a knave, then there are exactly two knights here" is true when Troll 1 is a knight and there are not exactly two knights)
+
+  Troll 2 is a knave (because "Troll 1 is lying" is a lie when Troll 1 is a knight)
+
+  Troll 3 is a knight (because "Either we are all knaves or at least one of us is a knight" is true when there's at least one knight)
+
+  Therefore, the correct answer is: Troll 1 is a knight, Troll 2 is a knave, and Troll 3 is a knight.
+
+	\subsection{Investigate, pg. 15}
+
+  Statements 2 and 4 are equivalent. 1 implies 3. 3 implies no one, and 4 implies no one. 
+
+	\subsection{Exercises, pg. 17}
+
+  1. a) Atomic statement;
+
+  b) Atomic statement;
+
+  c) Molecular statement.
+
+  2. a) Not a statement;
+  
+  b) Atomic statement
+
+  c) Molecular statement, disjunction;
+
+  d) Molecular statement, conditional;
+
+  e) Molecular statement, disjunction;
+
+  f) Atomic statement
+
+  3. a) $P \wedge Q$
+
+  b) $P \rightarrow \neg Q$
+
+  c) Jack passed math or Jill passed math
+
+  d) If is not the case that Jack or Jill passed math, then Jill passed math
+
+  e) i) Nothing. ii) Jack did not pass math.
+
+  4. a) Impossible to determine;
+  
+  b) A true statement, regardless 13 is your favorite number;
+
+  c) A true statement, regardless 13 is your favorite number;
+
+  d) A true statement regardless;
+
+  e) Impossible to determine, as I don't know if 13 is your favorite number;
+
+  f) False, regardless;
+
+  g) True, regardless.
+
+  5. p: "The square is blue";
+
+  q: "The triangle is green";
 	
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $p$ & $q$ & $p \rightarrow q$ \\
+    \hline
+    T & T & T \\
+    T & F & F \\
+    F & T & T \\
+    F & F & T \\
+    \hline
+  \end{tabular}
+  }
+
+  If $p \rightarrow q$ is true, then $q$ could not be false.
+
+  a) False;
+
+  b) Impossible to determine;
+
+  c) True, as the triangle is green;
+
+  d) Impossible to determine;
+
+  e) True, as the triangle is green.
+
+  6. p: "The square is blue";
+
+  q: "The triangle is green";
+
+  If the converse is false, the only possible solution is that $p$ is false, and $q$ is true. In other words, the triangle is green, and the square is not blue.
 	
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    $p$ & $q$ & $p \rightarrow q$ & $q \rightarrow p$ \\
+    \hline
+    F & T & T & F \\
+    \hline
+  \end{tabular}
+  }
+
+  a) False;
+
+  b) True;
+
+  c) False;
+
+  d) True.
+
+  7. a) Neither;
+
+  b) Contrapositive;
+
+  c) Converse;
+
+  d) Neither;
+
+  e) Neither;
+
+  f) Neither;
+
+  8. a) If Oscar drinks milk, them he eats Chinese food;
+
+  b) If Oscar does not drink milk, them he does not eat Chinese food;
+
+  c) Yes, it's possible. If the contrapositive in that case is false, them I have to conclude that Oscar indeed does not eat Chinese food;
+
+  d) No, I can't. It still possible that Oscar eats or not Chinese food and the statement be true whatsoever.
+
+  e) This is not a possible situation.
+
+  9. a) Not equivalent and not converse;
+
+  b) This is the converse;
+
+  c) This is the converse also;
+
+  d) A equivalent what to express the original statement;
+
+  10. a) If you exercise, then you lose weight;
+
+  b) If you exercise, then you lose weight;
+
+  c) If you're American, then you're patriotic;
+
+  d) If you're American, then you're patriotic;
+
+  e) If a number is a rational number, then it is a real number;
+
+  f) If a number is not even, then it is prime;
+
+  g) If the Broncos play the Super Bowl, then they win the Super Bowl;
+
+  11. 
+
+
+  a) $p$: You win the lottery; $q$: You will be rich.
+
+  Original proposition: $p \rightarrow q$. Let's call it "1" from now on. 
+
+  Proposition stated on item a: $p \veebar \neg q$. Let's call it "2".
+
+  Truth table of "1".
+
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $p$ & $q$ & $p \rightarrow q$ \\
+    \hline
+    T & T & T \\
+    T & F & F \\
+    F & T & T \\
+    F & F & T \\
+    \hline
+  \end{tabular}
+  }
+  
+  Truth table of "2".
+
+  {
+  \setlength{\tabcolsep}{10pt} % increase space between columns
+  \renewcommand{\arraystretch}{1.5} % increase space between rows
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $p$ & $q$ & $p \veebar \neg q$ \\
+    \hline
+    T & T & T \\
+    T & F & F \\
+    F & T & F \\
+    F & F & T \\
+    \hline
+  \end{tabular}
+  }
+
+  These two truth tables are not equivalent.
+
+
+  This is not equivalent to the original statement nor it is its converse;
+
+  b) This is not equivalent to the original statement nor it is its converse;
+
+  c) This is not equivalent to the original statement nor it is its converse;
+
+  d) This is equivalent to the original statement;
+
+  e) This is not equivalent to the original statement nor it is its converse;
+
+  f) This is the converse of the original statement;
+
+  g) This is equivalent to the original statement;
+
+  h)  This is equivalent to the original statement;
+
+  i) This is not equivalent to the original statement nor it is its converse;
+
+  j) This is not equivalent to the original statement nor it is its converse;
+
+  k) This is the contrapositive;
+
+  l) This is not equivalent to the original statement nor it is its converse;
+
+
 \end{document}
