@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+% Pacotes para matemática
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs} % Para usar \mathscr para letras cursivas
+
+% Pacote para definição de margens e espaçamento
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+  headheight=25.83331pt
+}
+
+% Pacote para links clicáveis
+\usepackage{hyperref}
+
+% Pacote para línguas
+\usepackage[brazilian]{babel}
+
+% Pacote para imagens
+\usepackage{graphicx}
+
+% Pacote para cores e fundo da página
+\usepackage{xcolor}
+% Defina a cor de fundo da página e a cor do texto
+\pagecolor{gray!50!black} % Isso definirá o fundo para ser escuro
+\color{white} % Isso definirá a cor do texto para ser clara
+\definecolor{lightgreen}{rgb}{0.56, 0.93, 0.56}
+
+% Pacotes para cabeçalhos personalizados
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\color{white}Singular Value Decomposition} % Cor do texto no cabeçalho
+\fancyhead[R]{\color{white}\thepage} % Cor do número da página
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{white}\leaders\hrule height \headrulewidth\hfill}}
+
+% Alterar a fonte para sem serifa
+\renewcommand{\familydefault}{\sfdefault}
+
+% Definições de ambientes de teoremas
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
+\newtheorem{example}[definition]{Exemplo}
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{proposition}[definition]{Proposição}
+\newtheorem{corollary}[definition]{Corolário}
+\newtheorem{remark}[definition]{Observação}
+
+% Comando para nomes de definições e teoremas em negrito
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+% Configurações para links e cores
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,      
+  urlcolor=cyan,
+}
+
+% Data de criação
+\newcommand{\dataCriacao}{10 / 02 / 2024}
+
+% Pacote para datas
+\usepackage{datetime2}
+
+% Estilo de data
+\DTMnewdatestyle{mydatestyle}{
+  \renewcommand{\DTMdisplaydate}[4]{%
+    \twodigit##3\,/\,\twodigit##2\,/\,\number##1 % dd/mm/yyyy
+  }
+  \renewcommand{\DTMDisplaydate}{\DTMdisplaydate}
+}
+
+% Ativando o estilo de data personalizado
+\DTMsetdatestyle{mydatestyle}
+
+% Título e autor
+\title{\color{lightgreen}Single Value Decomposition}
+\author{André Carvalho}
+\date{Criado: \dataCriacao\\Atualizado: \shortRomandate\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+Em Álgebra Linear, a Decomposição em Valores Singulares ou Singular Value Decomposition (SVD) é a fatoração de uma matriz real ou complexa, com diversas aplicações importantes em processamento de sinais e estatística.
+\end{abstract}
+
+\section{Exercício 1}
+
+Dada a matriz 
+
+\[
+B = \begin{bmatrix} 2 & 3 \\ 5 & 7 \end{bmatrix}
+\]
+
+\noindent realize a decomposição SVD e identifique as matrizes $U$, $\Sigma$, e $V^T$.
+
+\vspace{5mm}
+
+\noindent Neste exercício, você deve:
+
+\begin{enumerate}
+  \item Calcular as matrizes $B^TB$ e $BB^T$.
+  \item Encontrar os autovalores e autovetores de $B^TB$ e $BB^T$.
+  \item Determinar os valores singulares para $\Sigma$ a partir dos autovalores.
+  \item Construir as matrizes $U$, $\Sigma$ e $V$ (lembrando de transpor $V$ para obter $V^T$).
+  \item Verificar se a multiplicação $U \Sigma V^T$ recompõe a matriz original $B$.
+\end{enumerate}
+
+\end{document}
+
+
